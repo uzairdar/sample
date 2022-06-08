@@ -27,10 +27,10 @@ function App(props:any) {
             minWidth: '339px',
             maxWidth: '340px',
           }}
-          xxs="11"
-          xs="7"
-          sm="6"
-          md="5"
+          xxs="1"
+          xs="1"
+          sm="2"
+          md="2"
           lg="3"
           xl="3"
           xxl="3" 
