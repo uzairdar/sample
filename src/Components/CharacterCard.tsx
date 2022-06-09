@@ -26,6 +26,11 @@ function CharacterCard(props:any) {
         setColor("dotU")
     }
   },)
+  useEffect(() => {
+    if(props.favArray.find((x:any) => x.id == data.id)){
+    setFavourite(false)    
+    }
+  },[])
     return (
     <Card className="mb-3 mt-3 ml-3 mr-3" 
     >
@@ -37,7 +42,15 @@ function CharacterCard(props:any) {
             <CardText className="hovered">{data?.location.name}</CardText>
             <CardText className="hovered"> {data?.gender} </CardText>
             <div style={{display: 'flex', justifyContent: "flex-end"}}>
-            <Button color="danger" onClick={() => setFavourite(!favourite)}>{favourite?"Favourite":"Unfavourite"}</Button>
+            <Button color="danger" onClick={() => {
+                setFavourite(!favourite)
+                if(favourite){
+                    props.setFavArray((prevState:any) => [...prevState, data]);
+                }
+                else{
+                   props.setFavArray(props.favArray.filter((single:any) => single.id !== data.id)); 
+                }
+            }}>{favourite ?"Favourite":"Unfavourite"}</Button>
             </div>
         </CardBody>
     </Card>
